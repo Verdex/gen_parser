@@ -1,19 +1,18 @@
 
-/*
-    expect
-    parse_symbol
-    parse_number
-    parse_string
-    maybe
-    zero_or_more
-    one_or_more
-    list
-    choice
-*/
 
 #[derive(Debug)]
 pub enum Parser {
+    Def { name: String, def: Box<Parser> },
+    Invoke(String),
     Expect(String),
+    ParseSymbol,
+    ParseNumber,
+    ParseString,
+    Maybe(Box<Parser>),
+    ZeroOrMore(Box<Parser>),
+    OneOrMore(Box<Parser>),
+    List(Box<Parser>),
+    Choice(Box<Parser>),
 }
 
 
